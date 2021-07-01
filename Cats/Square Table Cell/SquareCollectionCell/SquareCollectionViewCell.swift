@@ -9,7 +9,9 @@ import UIKit
 
 class SquareCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet var someLabel: UILabel!
+    @IBOutlet var catLabel: UILabel!
+    @IBOutlet weak var catImage: UIImageView!
+    
     
     static let identifier = "SquareCollectionViewCell"
     
@@ -24,7 +26,8 @@ class SquareCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(with cat: Cat) {
-        self.someLabel.text = cat.description
+        self.catLabel.text = cat.name
+        self.catImage.image = UIImage(data: NetworkManager.shared.fetchImage(urlImage: cat.image.url)!)
     }
     
     

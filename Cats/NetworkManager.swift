@@ -19,7 +19,7 @@ class NetworkManager {
     static let shared = NetworkManager()
     
     let urlBase = "https://api.thecatapi.com/v1/breeds"
-    let api_key = "?x-api-key=fb56469e-374c-42e8-92c5-10119d8dc403&limit=3"
+    let api_key = "?x-api-key=fb56469e-374c-42e8-92c5-10119d8dc403&limit=12"
     
     func fetchCats(completion: @escaping (ObtainResult) -> Void) {
         

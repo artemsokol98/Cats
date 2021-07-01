@@ -16,14 +16,14 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
                       bundle: nil)
     }
     
-    func configure(with cats: Cat) {
+    func configure(with cats: [Cat]) {
         self.cats = cats
         collectionView.reloadData()
     }
     
     @IBOutlet var collectionView: UICollectionView!
     
-    var cats = Cat(name: "", life_span: "", origin: "", image: Image(url: ""), description: "")
+    var cats = [Cat]()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,13 +40,13 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        cats.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath) as! MyCollectionViewCell
-        cell.configure(with: cats)
+        cell.configure(with: cats[indexPath.row])
         return cell
         
     }

@@ -26,6 +26,7 @@
 		71A6FDE82689FB20001094FB /* SquareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71A6FDE62689FB20001094FB /* SquareTableViewCell.xib */; };
 		71A6FDEC268A09E0001094FB /* SquareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A6FDEA268A09E0001094FB /* SquareCollectionViewCell.swift */; };
 		71A6FDED268A09E0001094FB /* SquareCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71A6FDEB268A09E0001094FB /* SquareCollectionViewCell.xib */; };
+		71B9607E268DABBD007C2ABA /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B9607D268DABBD007C2ABA /* ImageModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		71A6FDE62689FB20001094FB /* SquareTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SquareTableViewCell.xib; sourceTree = "<group>"; };
 		71A6FDEA268A09E0001094FB /* SquareCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareCollectionViewCell.swift; sourceTree = "<group>"; };
 		71A6FDEB268A09E0001094FB /* SquareCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SquareCollectionViewCell.xib; sourceTree = "<group>"; };
+		71B9607D268DABBD007C2ABA /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				7116BA37268774D30090CC74 /* Horizontal Scroll Table Cell */,
 				7116B9D52685D72E0090CC74 /* NetworkManager.swift */,
 				7116B9D72685D74B0090CC74 /* CatModel.swift */,
+				71B9607D268DABBD007C2ABA /* ImageModel.swift */,
 				7116B9CA2685D3080090CC74 /* Assets.xcassets */,
 				7116B9CC2685D3080090CC74 /* LaunchScreen.storyboard */,
 				7116B9CF2685D3080090CC74 /* Info.plist */,
@@ -222,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71B9607E268DABBD007C2ABA /* ImageModel.swift in Sources */,
 				7116BA3E2687887D0090CC74 /* CustomTableViewController.swift in Sources */,
 				7116B9D62685D72E0090CC74 /* NetworkManager.swift in Sources */,
 				7116BA3B26877B0B0090CC74 /* MyCollectionViewCell.swift in Sources */,

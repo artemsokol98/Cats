@@ -16,16 +16,15 @@ class SquareTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
                       bundle: nil)
     }
     
-    func configure(with cats: Cat) {
+    func configure(with cats: [Cat]) {
         self.cat = cats
         collectionView.reloadData()
     }
     
     @IBOutlet var collectionView: UICollectionView!
     
+    var cat = [Cat]()
     
-    
-    var cat: Cat = Cat(name: "", life_span: "", origin: "", image: Image(url: ""), description: "")
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,12 +41,12 @@ class SquareTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        cat.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SquareCollectionViewCell.identifier, for: indexPath) as! SquareCollectionViewCell
-        cell.configure(with: cat)
+        cell.configure(with: cat[indexPath.row])
         cell.layer.borderColor = UIColor.blue.cgColor
         cell.layer.borderWidth = 1
         return cell

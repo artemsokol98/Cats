@@ -15,6 +15,3 @@ struct Cat: Decodable {
     let description: String
 }
 
-struct Image: Decodable {
-    let url: String
-}

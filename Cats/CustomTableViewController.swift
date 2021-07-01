@@ -32,37 +32,34 @@ class CustomTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     //MARK: - Public Methods
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return cats.count
+        1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        cats.count / 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row % 3 == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleTableViewCell", for: indexPath) as! SimpleTableViewCell
-            let cat = cats[indexPath.section]
-            
-            var content = cell.defaultContentConfiguration()
-            content.text = "Country origin \(cat.origin)"
-            content.secondaryText = "Life expectancy \(cat.life_span)"
-            
-            cell.contentConfiguration = content
-            
+            cell.configure(with: cats[2 * indexPath.row])
+
             return cell
             
         } else if indexPath.row % 3 == 1 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "SquareTableViewCell", for: indexPath) as! SquareTableViewCell
-            cell.configure(with: cats[indexPath.section])
+            cell.configure(with: Array(cats[(2 * indexPath.row - 1)...(2 * indexPath.row)]))
+
             return cell
             
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionTableViewCell", for: indexPath) as! CollectionTableViewCell
-            cell.configure(with: cats[indexPath.section])
+            cell.configure(with: Array(cats[(2 * indexPath.row - 1)...(2 * indexPath.row + 1)]))
+
             return cell
         }
     }
@@ -79,16 +76,7 @@ class CustomTableViewController: UIViewController, UITableViewDelegate, UITableV
             
         }
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
-        
-    }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        cats[section].name
-        
-    }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }

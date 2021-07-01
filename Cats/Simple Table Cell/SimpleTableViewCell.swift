@@ -9,6 +9,10 @@ import UIKit
 
 class SimpleTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var imageCat: UIImageView!
+    @IBOutlet weak var catName: UILabel!
+    @IBOutlet weak var catOrigin: UILabel!
+    
     static let identifier = "SimpleTableViewCell"
     
     static func nib() -> UINib {
@@ -24,6 +28,13 @@ class SimpleTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+    }
+    
+    func configure(with cat: Cat) {
+        self.imageCat.image = UIImage(data: NetworkManager.shared.fetchImage(urlImage: cat.image.url)!)
+        self.catName.text = cat.name
+        self.catOrigin.text = "Country origin: \(cat.origin)"
+        
     }
     
 }
