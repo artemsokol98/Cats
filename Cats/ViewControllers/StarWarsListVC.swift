@@ -71,7 +71,6 @@ class StarWarsListVC: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-
     //MARK: - Private methods
 
     private func showAlert(title: String, message: String) {
