@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CatsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var table: UITableView!
     
@@ -27,7 +27,7 @@ class CustomTableViewController: UIViewController, UITableViewDelegate, UITableV
         table.delegate = self
         table.dataSource = self
         
-        loadingView = showLoading(in: view)
+        loadingView =  LoadingIndicator.shared.showLoading(in: view)
         sendRequest()
     }
     
@@ -99,16 +99,7 @@ class CustomTableViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
     }
-    
-    private func showLoading(in view: UIView) -> UIActivityIndicatorView {
-        let activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.startAnimating()
-        activityIndicator.center = view.center
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
-        return activityIndicator
-    }
-    
+
     private func showAlert(title: String, message: String) {
         
         let action = UIAlertAction(title: "Try again", style: .default) { _ in

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8VY-mB-O19">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CZ2-5n-bLM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,13 +12,13 @@
         <!--Cats-->
         <scene sceneID="mGV-DY-gJN">
             <objects>
-                <viewController id="jq0-zp-Kfd" customClass="CustomTableViewController" customModule="Cats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jq0-zp-Kfd" customClass="CatsTableViewController" customModule="Cats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uyt-ol-b7g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9AY-xi-PSR">
-                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -37,12 +38,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZJ-ck-4V7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2665.217391304348" y="-153.34821428571428"/>
+            <point key="canvasLocation" x="3525" y="-563"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Cats-->
         <scene sceneID="oy7-mv-3It">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8VY-mB-O19" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Cats" image="applescript" catalog="system" id="7Bd-sH-JxG">
+                        <imageReference key="selectedImage" image="applescript" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="vBv-Hl-brA">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -55,10 +59,133 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUi-Ps-HQa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2646" y="-563"/>
+        </scene>
+        <!--Star Wars ListVC-->
+        <scene sceneID="Clt-Jp-rsh">
+            <objects>
+                <viewController id="DyU-3y-LWF" customClass="StarWarsListVC" customModule="Cats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qfM-iw-guS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YH7-xZ-xbY">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StarWarsPeople" id="mZW-oe-uKW">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mZW-oe-uKW" id="Z21-vV-Zb4">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="mxM-zi-hep" kind="show" id="6eT-fA-rLu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="DyU-3y-LWF" id="sYn-bi-Rhs"/>
+                                    <outlet property="delegate" destination="DyU-3y-LWF" id="lpL-gS-E3I"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LO0-nx-pJo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YH7-xZ-xbY" firstAttribute="top" secondItem="LO0-nx-pJo" secondAttribute="top" id="5Q1-vz-ewz"/>
+                            <constraint firstItem="YH7-xZ-xbY" firstAttribute="leading" secondItem="LO0-nx-pJo" secondAttribute="leading" id="cDo-Gi-R33"/>
+                            <constraint firstItem="LO0-nx-pJo" firstAttribute="bottom" secondItem="YH7-xZ-xbY" secondAttribute="bottom" id="mxe-mG-UFQ"/>
+                            <constraint firstItem="LO0-nx-pJo" firstAttribute="trailing" secondItem="YH7-xZ-xbY" secondAttribute="trailing" id="vpV-aX-tDR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="X85-1W-bdm"/>
+                    <connections>
+                        <outlet property="table" destination="YH7-xZ-xbY" id="s97-1g-h8U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uqm-Oh-8OB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3555.072463768116" y="188.83928571428569"/>
+        </scene>
+        <!--Description Star Wars ItemVC-->
+        <scene sceneID="6Sk-0s-h4c">
+            <objects>
+                <viewController id="mxM-zi-hep" customClass="DescriptionStarWarsItemVC" customModule="Cats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bkG-1l-HlM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMa-4X-DcX">
+                                <rect key="frame" x="41.5" y="89.5" width="331" height="717"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="q1W-GH-2fn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WMa-4X-DcX" firstAttribute="height" secondItem="bkG-1l-HlM" secondAttribute="height" multiplier="0.8" id="IXp-d6-kFi"/>
+                            <constraint firstItem="WMa-4X-DcX" firstAttribute="width" secondItem="bkG-1l-HlM" secondAttribute="width" multiplier="0.8" id="LcM-qH-rQT"/>
+                            <constraint firstItem="WMa-4X-DcX" firstAttribute="centerX" secondItem="bkG-1l-HlM" secondAttribute="centerX" id="prt-jv-Kfs"/>
+                            <constraint firstItem="WMa-4X-DcX" firstAttribute="centerY" secondItem="bkG-1l-HlM" secondAttribute="centerY" id="wN9-xF-FKp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="itH-pI-kCF"/>
+                    <connections>
+                        <outlet property="itemDescriptionLabel" destination="WMa-4X-DcX" id="tzg-lU-JSH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h2Y-OY-gc6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4484" y="189"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="LwJ-RT-jQm">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="CZ2-5n-bLM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DH9-FC-fWC">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="8VY-mB-O19" kind="relationship" relationship="viewControllers" id="4ux-NX-wpP"/>
+                        <segue destination="Wfr-yv-OxX" kind="relationship" relationship="viewControllers" id="dxA-1y-VHJ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xAQ-UD-9py" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="1753.6231884057972" y="-153.34821428571428"/>
+        </scene>
+        <!--StarWars-->
+        <scene sceneID="PvE-kr-9E3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wfr-yv-OxX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="StarWars" image="hurricane" catalog="system" id="Hna-qY-8Yw">
+                        <imageReference key="selectedImage" image="hurricane" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="3Pm-93-e74">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DyU-3y-LWF" kind="relationship" relationship="rootViewController" id="Uhy-Aj-J8C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AkI-QJ-YRi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2644.9275362318845" y="188.83928571428569"/>
         </scene>
     </scenes>
     <resources>
+        <image name="applescript" catalog="system" width="101" height="128"/>
+        <image name="hurricane" catalog="system" width="91" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
