@@ -13,7 +13,7 @@ enum ObtainResultCat {
 }
 
 enum ObtainResultStarWars {
-    case success(sw: StarWarsArray)
+    case success(swa: StarWarsArray)
     case failure(error: Error)
 }
 
@@ -24,7 +24,7 @@ class NetworkManager {
     static let shared = NetworkManager()
     
     let urlBase = "https://api.thecatapi.com/v1/breeds"
-    let api_key = "?x-api-key=fb56469e-374c-42e8-92c5-10119d8dc403&limit=12"
+    let apiKey = "?x-api-key=fb56469e-374c-42e8-92c5-10119d8dc403&limit=12"
     
     let urlStarWars = "https://swapi.dev/api/people/?search="
     
@@ -32,14 +32,15 @@ class NetworkManager {
         
         sessionConfig.timeoutIntervalForRequest = 10
         let session = URLSession(configuration: sessionConfig)
-        guard let url = URL(string: urlBase + api_key) else { return }
+        guard let url = URL(string: urlBase + apiKey) else { return }
         
-        session.dataTask(with: url) { data, response, error in
+        session.dataTask(with: url) { data, _, error in
             var result: ObtainResultCat
             
             if error == nil, let data = data {
-                
-                guard let cats = try? JSONDecoder().decode([Cat].self, from: data) else { return }
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                guard let cats = try? decoder.decode([Cat].self, from: data) else { return }
                 print(cats)
                 result = .success(cats: cats)
             } else {
@@ -67,14 +68,15 @@ class NetworkManager {
         
         guard let url = URL(string: searchString) else { return }
         print(url)
-        session.dataTask(with: url) { data, response, error in
+        session.dataTask(with: url) { data, _, error in
             var result: ObtainResultStarWars
             
             if error == nil, let data = data {
-                
-                guard let starWarsPeople = try? JSONDecoder().decode(StarWarsArray.self, from: data) else { return }
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                guard let starWarsPeople = try? decoder.decode(StarWarsArray.self, from: data) else { return }
                 print(starWarsPeople)
-                result = .success(sw: starWarsPeople)
+                result = .success(swa: starWarsPeople)
             } else {
                 result = .failure(error: error!)
             }
@@ -86,4 +88,3 @@ class NetworkManager {
     }
     
 }
-

@@ -7,11 +7,10 @@
 
 import UIKit
 
-class StarWarsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class StarWarsListVC: UIViewController {
     
-    @IBOutlet weak var table: UITableView!
+    @IBOutlet private weak var table: UITableView!
     
-    private var starWarsPeople: [StarWarsPeople] = []
     private var loadingView = UIActivityIndicatorView()
     private var search: String!
     
@@ -19,7 +18,7 @@ class StarWarsListVC: UIViewController, UITableViewDataSource, UITableViewDelega
     
     private let searchController = UISearchController()
     
-    //MARK: - Override methods
+    // MARK: - Override methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,52 +31,28 @@ class StarWarsListVC: UIViewController, UITableViewDataSource, UITableViewDelega
         
         navigationItem.searchController = searchController
         
+        searchController.obscuresBackgroundDuringPresentation = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = table.indexPathForSelectedRow {
             guard let descriptionStarWarsItem = segue.destination as? DescriptionStarWarsItemVC else {
                 return }
-            descriptionStarWarsItem.item = starWarsPeople[indexPath.row]
+            descriptionStarWarsItem.item = DataManager.shared.starWarsPeople[indexPath.row]
         }
     }
     
-    //MARK: - Public methods
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.search = searchBar.text
-        self.starWarsPeople = []
-        searchRequest(searchString: urlStarWars + search)
-        searchController.isActive = false
+    @IBAction func lastSearchesButton(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "showLastSearches", sender: self)
     }
     
+    // MARK: - Private methods
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        starWarsPeople.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StarWarsPeople", for: indexPath)
-        let people = starWarsPeople[indexPath.row]
-        
-        var content = cell.defaultContentConfiguration()
-        content.text = people.name
-        content.secondaryText = "Birthyear: \(people.birth_year)"
-        
-        cell.contentConfiguration = content
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    //MARK: - Private methods
-
     private func showAlert(title: String, message: String) {
         let action = UIAlertAction(title: "Try again", style: .default) { _ in
             self.searchRequest(searchString: self.urlStarWars + self.search)
-            
         }
+        
         let alert = UIAlertController(
             title: title,
             message: message,
@@ -96,15 +71,15 @@ class StarWarsListVC: UIViewController, UITableViewDataSource, UITableViewDelega
                     
                     self.loadingView.stopAnimating()
                     
-                    if (!self.starWarsPeople.isEmpty) {
-                        self.starWarsPeople.append(contentsOf: people.results)
+                    if !DataManager.shared.starWarsPeople.isEmpty {
+                        DataManager.shared.starWarsPeople.append(contentsOf: people.results)
                     } else {
-                        self.starWarsPeople = people.results
+                        DataManager.shared.starWarsPeople = people.results
                     }
                     
                     self.table.reloadData()
                     
-                    if (people.next != nil) {
+                    if people.next != nil {
                         self.searchRequest(searchString: people.next!)
                     }
                 }
@@ -116,5 +91,44 @@ class StarWarsListVC: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
     }
+    
+}
 
+extension StarWarsListVC: UITableViewDataSource {
+    // MARK: - Public methods
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return DataManager.shared.starWarsPeople.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StarWarsPeople", for: indexPath)
+        var content = cell.defaultContentConfiguration()
+        let people = DataManager.shared.starWarsPeople[indexPath.row]
+        content.text = people.name
+        content.secondaryText = "Birthyear: \(people.birthYear)"
+        cell.contentConfiguration = content
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showDescription", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension StarWarsListVC: UITableViewDelegate {
+    
+}
+
+extension StarWarsListVC: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.search = searchBar.text
+        DataManager.shared.starWarsPeople = []
+        DataManager.shared.lastSearches.insert(search, at: 0)
+        searchRequest(searchString: urlStarWars + search)
+        searchController.isActive = false
+        table.reloadData()
+    }
 }

@@ -9,9 +9,8 @@ import Foundation
 
 struct Cat: Decodable {
     let name: String
-    let life_span: String
+    let lifeSpan: String
     let origin: String
     let image: Image
     let description: String
 }
-

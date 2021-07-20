@@ -9,8 +9,7 @@ import UIKit
 
 class DescriptionStarWarsItemVC: UIViewController {
 
-    
-    @IBOutlet weak var itemDescriptionLabel: UILabel!
+    @IBOutlet private weak var itemDescriptionLabel: UILabel!
     var item: StarWarsPeople!
     
     override func viewDidLoad() {
@@ -21,10 +20,10 @@ class DescriptionStarWarsItemVC: UIViewController {
         Name: \(item.name)
         Height: \(item.height)
         Mass: \(item.mass)
-        Hair color: \(item.hair_color)
-        Skin color: \(item.skin_color)
-        Eye color: \(item.eye_color)
-        Birthyear: \(item.birth_year)
+        Hair color: \(item.hairColor)
+        Skin color: \(item.skinColor)
+        Eye color: \(item.eyeColor)
+        Birthyear: \(item.birthYear)
         Gender: \(item.gender)
         """
     }

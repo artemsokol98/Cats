@@ -7,9 +7,9 @@
 
 import UIKit
 
-class CatsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CatsTableViewController: UIViewController {
     
-    @IBOutlet var table: UITableView!
+    @IBOutlet private var table: UITableView!
     
     private var cats: [Cat] = []
     private var loadingView = UIActivityIndicatorView()
@@ -17,8 +17,9 @@ class CatsTableViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = #colorLiteral(red: 1, green: 0.990055835, blue: 0.7711565214, alpha: 1)
-        table.backgroundColor = #colorLiteral(red: 1, green: 0.990055835, blue: 0.7711565214, alpha: 1)
+        view.backgroundColor = CustomColor.customBackgroundColor
+        
+        table.backgroundColor =  CustomColor.customBackgroundColor
         
         table.register(CollectionTableViewCell.nib(), forCellReuseIdentifier: CollectionTableViewCell.identifier)
         table.register(SimpleTableViewCell.nib(), forCellReuseIdentifier: SimpleTableViewCell.identifier)
@@ -30,58 +31,8 @@ class CatsTableViewController: UIViewController, UITableViewDelegate, UITableVie
         loadingView =  LoadingIndicator.shared.showLoading(in: view)
         sendRequest()
     }
-    
-    //MARK: - Public Methods
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        cats.count / 2
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.row % 3 == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleTableViewCell", for: indexPath) as! SimpleTableViewCell
-            cell.configure(with: cats[2 * indexPath.row])
-
-            return cell
-            
-        } else if indexPath.row % 3 == 1 {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SquareTableViewCell", for: indexPath) as! SquareTableViewCell
-            cell.configure(with: Array(cats[(2 * indexPath.row - 1)...(2 * indexPath.row)]))
-
-            return cell
-            
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionTableViewCell", for: indexPath) as! CollectionTableViewCell
-            cell.configure(with: Array(cats[(2 * indexPath.row - 1)...(2 * indexPath.row + 1)]))
-
-            return cell
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row % 3 == 0 {
-            return 100.0
-            
-        } else if indexPath.row % 3 == 1 {
-            return 200.0
-            
-        } else {
-            return 250.0
-            
-        }
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    //MARK: - Private Methods
+  
+    // MARK: - Private Methods
     private func sendRequest() {
         NetworkManager.shared.fetchCats { result in
             switch result {
@@ -116,4 +67,65 @@ class CatsTableViewController: UIViewController, UITableViewDelegate, UITableVie
         alert.addAction(action)
         present(alert, animated: true)
     }
+}
+
+extension CatsTableViewController: UITableViewDelegate {
+    
+}
+
+extension CatsTableViewController: UITableViewDataSource {
+    
+    // MARK: - Public Methods
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        cats.count / 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.row % 3 == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleTableViewCell",
+                                                     for: indexPath) as! SimpleTableViewCell
+            cell.configure(with: cats[2 * indexPath.row])
+
+            return cell
+            
+        } else if indexPath.row % 3 == 1 {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SquareTableViewCell",
+                                                     for: indexPath) as! SquareTableViewCell
+            cell.configure(with: Array(cats[(2 * indexPath.row - 1)...(2 * indexPath.row)]))
+
+            return cell
+            
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionTableViewCell",
+                                                     for: indexPath) as! CollectionTableViewCell
+            cell.configure(with: Array(cats[(2 * indexPath.row - 1)...(2 * indexPath.row + 1)]))
+
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row % 3 == 0 {
+            return 100.0
+            
+        } else if indexPath.row % 3 == 1 {
+            return 200.0
+            
+        } else {
+            return 250.0
+            
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+   
 }

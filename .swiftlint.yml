@@ -1,0 +1,6 @@
+disabled_rules:
+    - force_cast
+    - trailing_whitespace
+excluded:
+    - Cats/Supporting/AppDelegate.swift
+    - Cats/Supporting/SceneDelegate.swift

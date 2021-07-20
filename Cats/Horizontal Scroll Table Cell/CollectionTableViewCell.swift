@@ -7,7 +7,10 @@
 
 import UIKit
 
-class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class CollectionTableViewCell: UITableViewCell,
+                               UICollectionViewDelegate,
+                               UICollectionViewDataSource,
+                               UICollectionViewDelegateFlowLayout {
     
     static let identifier = "CollectionTableViewCell"
     
@@ -28,7 +31,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        collectionView.backgroundColor = #colorLiteral(red: 1, green: 0.990055835, blue: 0.7711565214, alpha: 1)
+        collectionView.backgroundColor = CustomColor.customBackgroundColor
         collectionView.register(MyCollectionViewCell.nib(), forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -43,15 +46,20 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         cats.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath) as! MyCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: MyCollectionViewCell.identifier,
+            for: indexPath) as! MyCollectionViewCell
         cell.configure(with: cats[indexPath.row])
         return cell
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: 250, height: 250)
     }

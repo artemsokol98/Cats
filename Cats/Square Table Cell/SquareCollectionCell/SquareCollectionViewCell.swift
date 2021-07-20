@@ -12,7 +12,6 @@ class SquareCollectionViewCell: UICollectionViewCell {
     @IBOutlet var catLabel: UILabel!
     @IBOutlet weak var catImage: UIImageView!
     
-    
     static let identifier = "SquareCollectionViewCell"
     
     static func nib() -> UINib {
@@ -29,6 +28,5 @@ class SquareCollectionViewCell: UICollectionViewCell {
         self.catLabel.text = cat.name
         self.catImage.image = UIImage(data: NetworkManager.shared.fetchImage(urlImage: cat.image.url)!)
     }
-    
     
 }
