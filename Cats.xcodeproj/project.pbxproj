@@ -28,6 +28,7 @@
 		71373B422698B24100C47182 /* StarWarsPeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71373B412698B24100C47182 /* StarWarsPeopleModel.swift */; };
 		71373B462698B51C00C47182 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71373B452698B51C00C47182 /* LoadingIndicator.swift */; };
 		7143421726AEE4D5009DD851 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7143421626AEE4D5009DD851 /* .swiftlint.yml */; };
+		7143421926AEED40009DD851 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7143421826AEED40009DD851 /* .gitignore */; };
 		71A6FDE22689EEAE001094FB /* SimpleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A6FDE02689EEAE001094FB /* SimpleTableViewCell.swift */; };
 		71A6FDE32689EEAE001094FB /* SimpleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71A6FDE12689EEAE001094FB /* SimpleTableViewCell.xib */; };
 		71A6FDE72689FB20001094FB /* SquareTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A6FDE52689FB20001094FB /* SquareTableViewCell.swift */; };
@@ -67,6 +68,7 @@
 		71373B412698B24100C47182 /* StarWarsPeopleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsPeopleModel.swift; sourceTree = "<group>"; };
 		71373B452698B51C00C47182 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		7143421626AEE4D5009DD851 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
+		7143421826AEED40009DD851 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		71A6FDE02689EEAE001094FB /* SimpleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewCell.swift; sourceTree = "<group>"; };
 		71A6FDE12689EEAE001094FB /* SimpleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleTableViewCell.xib; sourceTree = "<group>"; };
 		71A6FDE52689FB20001094FB /* SquareTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareTableViewCell.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				7143421626AEE4D5009DD851 /* .swiftlint.yml */,
+				7143421826AEED40009DD851 /* .gitignore */,
 				712572CE26A8A6EF00F62CE6 /* StarWarsCoreData */,
 				71A6FDE42689FAF7001094FB /* Square Table Cell */,
 				71A6FDDF2689EE79001094FB /* Simple Table Cell */,
@@ -311,6 +314,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7143421926AEED40009DD851 /* .gitignore in Resources */,
 				7143421726AEE4D5009DD851 /* .swiftlint.yml in Resources */,
 				7116BA3C26877B0B0090CC74 /* MyCollectionViewCell.xib in Resources */,
 				7116B9CE2685D3080090CC74 /* LaunchScreen.storyboard in Resources */,
