@@ -26,8 +26,6 @@ class NetworkManager {
     let urlBase = "https://api.thecatapi.com/v1/breeds"
     let apiKey = "?x-api-key=fb56469e-374c-42e8-92c5-10119d8dc403&limit=12"
     
-    let urlStarWars = "https://swapi.dev/api/people/?search="
-    
     func fetchCats(completion: @escaping (ObtainResultCat) -> Void) {
         
         sessionConfig.timeoutIntervalForRequest = 10

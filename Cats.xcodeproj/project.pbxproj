@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		710C24C526AACEF0005EDFD0 /* StarWarsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710C24C326AACEF0005EDFD0 /* StarWarsCollectionViewCell.swift */; };
 		7110E7F5269C79CC00D28F98 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7110E7F4269C79CC00D28F98 /* Constants.swift */; };
 		7116B9C22685D3070090CC74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7116B9C12685D3070090CC74 /* AppDelegate.swift */; };
 		7116B9C42685D3070090CC74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7116B9C32685D3070090CC74 /* SceneDelegate.swift */; };
@@ -21,6 +22,9 @@
 		7116BA3C26877B0B0090CC74 /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7116BA3A26877B0B0090CC74 /* MyCollectionViewCell.xib */; };
 		7116BA3E2687887D0090CC74 /* CatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7116BA3D2687887D0090CC74 /* CatsTableViewController.swift */; };
 		711B2CE4268B9E7A003C4F79 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 711B2CE3268B9E7A003C4F79 /* .gitignore */; };
+		712572B326A8943200F62CE6 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 712572B126A8943200F62CE6 /* CoreDataModel.xcdatamodeld */; };
+		712572D726A8C68E00F62CE6 /* StarWarsCoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712572D526A8C68E00F62CE6 /* StarWarsCoreData+CoreDataClass.swift */; };
+		712572D826A8C68E00F62CE6 /* StarWarsCoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712572D626A8C68E00F62CE6 /* StarWarsCoreData+CoreDataProperties.swift */; };
 		71373B3E2698947300C47182 /* DescriptionStarWarsItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71373B3D2698947300C47182 /* DescriptionStarWarsItemVC.swift */; };
 		71373B422698B24100C47182 /* StarWarsPeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71373B412698B24100C47182 /* StarWarsPeopleModel.swift */; };
 		71373B462698B51C00C47182 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71373B452698B51C00C47182 /* LoadingIndicator.swift */; };
@@ -31,6 +35,7 @@
 		71A6FDEC268A09E0001094FB /* SquareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A6FDEA268A09E0001094FB /* SquareCollectionViewCell.swift */; };
 		71A6FDED268A09E0001094FB /* SquareCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71A6FDEB268A09E0001094FB /* SquareCollectionViewCell.xib */; };
 		71B9607E268DABBD007C2ABA /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B9607D268DABBD007C2ABA /* ImageModel.swift */; };
+		71D5BA5326A98E8300C573BB /* OfflineStarWarsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D5BA5226A98E8300C573BB /* OfflineStarWarsVC.swift */; };
 		71E3AC8626A5F86A00692026 /* LastSearchesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3AC8526A5F86A00692026 /* LastSearchesTVC.swift */; };
 		71E3AC8826A6025700692026 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3AC8726A6025700692026 /* DataManager.swift */; };
 		71E9C45C26959A23007E6B2E /* StarWarsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9C45B26959A23007E6B2E /* StarWarsModel.swift */; };
@@ -39,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		710C24C326AACEF0005EDFD0 /* StarWarsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsCollectionViewCell.swift; sourceTree = "<group>"; };
 		7110E7F4269C79CC00D28F98 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7116B9BE2685D3070090CC74 /* Cats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7116B9C12685D3070090CC74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +61,9 @@
 		7116BA3A26877B0B0090CC74 /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
 		7116BA3D2687887D0090CC74 /* CatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTableViewController.swift; sourceTree = "<group>"; };
 		711B2CE3268B9E7A003C4F79 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		712572B226A8943200F62CE6 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		712572D526A8C68E00F62CE6 /* StarWarsCoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StarWarsCoreData+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		712572D626A8C68E00F62CE6 /* StarWarsCoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StarWarsCoreData+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		71373B3D2698947300C47182 /* DescriptionStarWarsItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionStarWarsItemVC.swift; sourceTree = "<group>"; };
 		71373B412698B24100C47182 /* StarWarsPeopleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsPeopleModel.swift; sourceTree = "<group>"; };
 		71373B452698B51C00C47182 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
@@ -65,6 +74,7 @@
 		71A6FDEA268A09E0001094FB /* SquareCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareCollectionViewCell.swift; sourceTree = "<group>"; };
 		71A6FDEB268A09E0001094FB /* SquareCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SquareCollectionViewCell.xib; sourceTree = "<group>"; };
 		71B9607D268DABBD007C2ABA /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		71D5BA5226A98E8300C573BB /* OfflineStarWarsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OfflineStarWarsVC.swift; path = Cats/OfflineStarWarsVC.swift; sourceTree = SOURCE_ROOT; };
 		71E3AC8526A5F86A00692026 /* LastSearchesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastSearchesTVC.swift; sourceTree = "<group>"; };
 		71E3AC8726A6025700692026 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		71E9C45B26959A23007E6B2E /* StarWarsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsModel.swift; sourceTree = "<group>"; };
@@ -92,8 +102,15 @@
 				C93EE7F36D516143A77ADE44 /* Pods-Cats.debug.xcconfig */,
 				8D77201BB89A2642273675B3 /* Pods-Cats.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		710C24C726AACEF9005EDFD0 /* StarWarsCVC */ = {
+			isa = PBXGroup;
+			children = (
+				710C24C326AACEF0005EDFD0 /* StarWarsCollectionViewCell.swift */,
+			);
+			path = StarWarsCVC;
 			sourceTree = "<group>";
 		};
 		7116B9B52685D3070090CC74 = {
@@ -118,6 +135,7 @@
 		7116B9C02685D3070090CC74 /* Cats */ = {
 			isa = PBXGroup;
 			children = (
+				712572CE26A8A6EF00F62CE6 /* StarWarsCoreData */,
 				71A6FDE42689FAF7001094FB /* Square Table Cell */,
 				71A6FDDF2689EE79001094FB /* Simple Table Cell */,
 				71373B402698B1C800C47182 /* Supporting */,
@@ -129,8 +147,10 @@
 				71E3AC8726A6025700692026 /* DataManager.swift */,
 				71373B432698B25D00C47182 /* Models */,
 				7116B9CA2685D3080090CC74 /* Assets.xcassets */,
+				712572B126A8943200F62CE6 /* CoreDataModel.xcdatamodeld */,
 				7116B9CF2685D3080090CC74 /* Info.plist */,
 				7116B9CC2685D3080090CC74 /* LaunchScreen.storyboard */,
+				710C24C726AACEF9005EDFD0 /* StarWarsCVC */,
 			);
 			path = Cats;
 			sourceTree = "<group>";
@@ -152,6 +172,15 @@
 				7116BA3A26877B0B0090CC74 /* MyCollectionViewCell.xib */,
 			);
 			path = "Collection Cell";
+			sourceTree = "<group>";
+		};
+		712572CE26A8A6EF00F62CE6 /* StarWarsCoreData */ = {
+			isa = PBXGroup;
+			children = (
+				712572D526A8C68E00F62CE6 /* StarWarsCoreData+CoreDataClass.swift */,
+				712572D626A8C68E00F62CE6 /* StarWarsCoreData+CoreDataProperties.swift */,
+			);
+			path = StarWarsCoreData;
 			sourceTree = "<group>";
 		};
 		71373B402698B1C800C47182 /* Supporting */ = {
@@ -177,6 +206,7 @@
 		71373B442698B27500C47182 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				71D5BA5226A98E8300C573BB /* OfflineStarWarsVC.swift */,
 				71E3AC8526A5F86A00692026 /* LastSearchesTVC.swift */,
 				71373B3D2698947300C47182 /* DescriptionStarWarsItemVC.swift */,
 				71F4EF4F2695A97D00C9D304 /* StarWarsListVC.swift */,
@@ -344,11 +374,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				71B9607E268DABBD007C2ABA /* ImageModel.swift in Sources */,
+				712572D826A8C68E00F62CE6 /* StarWarsCoreData+CoreDataProperties.swift in Sources */,
 				7110E7F5269C79CC00D28F98 /* Constants.swift in Sources */,
 				7116BA3E2687887D0090CC74 /* CatsTableViewController.swift in Sources */,
 				7116B9D62685D72E0090CC74 /* NetworkManager.swift in Sources */,
 				7116BA3B26877B0B0090CC74 /* MyCollectionViewCell.swift in Sources */,
 				71F4EF502695A97D00C9D304 /* StarWarsListVC.swift in Sources */,
+				710C24C526AACEF0005EDFD0 /* StarWarsCollectionViewCell.swift in Sources */,
 				7116BA35268774C70090CC74 /* CollectionTableViewCell.swift in Sources */,
 				7116B9C22685D3070090CC74 /* AppDelegate.swift in Sources */,
 				71373B422698B24100C47182 /* StarWarsPeopleModel.swift in Sources */,
@@ -356,10 +388,13 @@
 				7116B9D82685D74B0090CC74 /* CatModel.swift in Sources */,
 				71E3AC8626A5F86A00692026 /* LastSearchesTVC.swift in Sources */,
 				71A6FDE22689EEAE001094FB /* SimpleTableViewCell.swift in Sources */,
+				712572D726A8C68E00F62CE6 /* StarWarsCoreData+CoreDataClass.swift in Sources */,
 				71A6FDE72689FB20001094FB /* SquareTableViewCell.swift in Sources */,
+				712572B326A8943200F62CE6 /* CoreDataModel.xcdatamodeld in Sources */,
 				71E3AC8826A6025700692026 /* DataManager.swift in Sources */,
 				71373B462698B51C00C47182 /* LoadingIndicator.swift in Sources */,
 				71A6FDEC268A09E0001094FB /* SquareCollectionViewCell.swift in Sources */,
+				71D5BA5326A98E8300C573BB /* OfflineStarWarsVC.swift in Sources */,
 				71E9C45C26959A23007E6B2E /* StarWarsModel.swift in Sources */,
 				7116B9C42685D3070090CC74 /* SceneDelegate.swift in Sources */,
 			);
@@ -565,6 +600,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		712572B126A8943200F62CE6 /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				712572B226A8943200F62CE6 /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 712572B226A8943200F62CE6 /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7116B9B62685D3070090CC74 /* Project object */;
 }

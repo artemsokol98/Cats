@@ -9,14 +9,17 @@ import UIKit
 
 class StarWarsListVC: UIViewController {
     
-    @IBOutlet private weak var table: UITableView!
+    private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    private let itemsPerRow: CGFloat = 2
     
     private var loadingView = UIActivityIndicatorView()
     private var search: String!
-    
     private let urlStarWars = "https://swapi.dev/api/people/?search="
-    
     private let searchController = UISearchController()
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     // MARK: - Override methods
     
@@ -25,25 +28,35 @@ class StarWarsListVC: UIViewController {
         
         title = "Search"
         searchController.searchBar.delegate = self
-        
-        table.dataSource = self
-        table.delegate = self
-        
+        collectionView.dataSource = self
+        collectionView.delegate = self
         navigationItem.searchController = searchController
         
         searchController.obscuresBackgroundDuringPresentation = false
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.frame = view.bounds
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let indexPath = table.indexPathForSelectedRow {
+ 
+        if let indexPath = collectionView.indexPathsForSelectedItems?.first {
             guard let descriptionStarWarsItem = segue.destination as? DescriptionStarWarsItemVC else {
                 return }
+            print(indexPath.row)
             descriptionStarWarsItem.item = DataManager.shared.starWarsPeople[indexPath.row]
+            createItem(item: DataManager.shared.starWarsPeople[indexPath.row])
         }
     }
     
     @IBAction func lastSearchesButton(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "showLastSearches", sender: self)
+    }
+    
+    @IBAction func showOfflineButton(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "showOffline", sender: self)
     }
     
     // MARK: - Private methods
@@ -53,12 +66,15 @@ class StarWarsListVC: UIViewController {
             self.searchRequest(searchString: self.urlStarWars + self.search)
         }
         
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
+        
         let alert = UIAlertController(
             title: title,
             message: message,
             preferredStyle: .alert
         )
         alert.addAction(action)
+        alert.addAction(cancel)
         present(alert, animated: true)
     }
     
@@ -77,7 +93,7 @@ class StarWarsListVC: UIViewController {
                         DataManager.shared.starWarsPeople = people.results
                     }
                     
-                    self.table.reloadData()
+                    self.collectionView.reloadData()
                     
                     if people.next != nil {
                         self.searchRequest(searchString: people.next!)
@@ -92,32 +108,25 @@ class StarWarsListVC: UIViewController {
         }
     }
     
-}
-
-extension StarWarsListVC: UITableViewDataSource {
-    // MARK: - Public methods
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataManager.shared.starWarsPeople.count
-    }
+    // MARK: - Core Data
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StarWarsPeople", for: indexPath)
-        var content = cell.defaultContentConfiguration()
-        let people = DataManager.shared.starWarsPeople[indexPath.row]
-        content.text = people.name
-        content.secondaryText = "Birthyear: \(people.birthYear)"
-        cell.contentConfiguration = content
-        return cell
+    func createItem(item: StarWarsPeople) {
+        let newItem = StarWarsCoreData(context: context)
+        newItem.name = item.name
+        newItem.mass = item.mass
+        newItem.height = item.height
+        newItem.hairColor = item.hairColor
+        newItem.gender = item.gender
+        newItem.eyeColor = item.eyeColor
+        newItem.birthYear = item.birthYear
+        newItem.skinColor = item.skinColor
+        
+        do {
+            try context.save()
+        } catch {
+            
+        }
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showDescription", sender: self)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
-
-extension StarWarsListVC: UITableViewDelegate {
     
 }
 
@@ -129,6 +138,66 @@ extension StarWarsListVC: UISearchBarDelegate {
         DataManager.shared.lastSearches.insert(search, at: 0)
         searchRequest(searchString: urlStarWars + search)
         searchController.isActive = false
-        table.reloadData()
+        collectionView.reloadData()
     }
+}
+
+extension StarWarsListVC: UICollectionViewDelegate {
+    
+}
+
+extension StarWarsListVC: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        DataManager.shared.starWarsPeople.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        var cell = UICollectionViewCell()
+        
+        if let starWarsCell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: StarWarsCollectionViewCell.identifier,
+            for: indexPath) as? StarWarsCollectionViewCell {
+            
+            starWarsCell.configure(starWars: DataManager.shared.starWarsPeople[indexPath.row])
+            cell = starWarsCell
+        }
+        return cell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showDescription", sender: self)
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
+}
+
+extension StarWarsListVC: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return sectionInsets.left
+    }
+    
 }

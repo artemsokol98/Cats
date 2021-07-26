@@ -16,5 +16,4 @@ struct StarWarsPeople: Decodable {
     let eyeColor: String
     let birthYear: String
     let gender: String
-    let url: String
 }
