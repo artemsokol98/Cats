@@ -34,12 +34,7 @@ class StarWarsListVC: UIViewController {
         
         searchController.obscuresBackgroundDuringPresentation = false
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        collectionView.frame = view.bounds
-    }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
  
         if let indexPath = collectionView.indexPathsForSelectedItems?.first {

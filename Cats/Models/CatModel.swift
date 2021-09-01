@@ -14,3 +14,12 @@ struct Cat: Decodable {
     let image: Image
     let description: String
 }
+
+struct CatDetails: Decodable {
+    let url: String
+}
+
+struct CatsAndDogs {
+    let breed: String
+    let url: String
+}

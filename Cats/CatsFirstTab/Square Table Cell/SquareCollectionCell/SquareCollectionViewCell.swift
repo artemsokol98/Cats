@@ -21,12 +21,10 @@ class SquareCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
 
     func configure(with cat: Cat) {
         self.catLabel.text = cat.name
         self.catImage.image = UIImage(data: NetworkManager.shared.fetchImage(urlImage: cat.image.url)!)
     }
-    
 }

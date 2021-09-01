@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CatsAndDogsCache" representedClassName="CatsAndDogsCache" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="describe" optional="YES" attributeType="String"/>
+        <attribute name="lifeSpan" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="origin" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="DogsCache" representedClassName="DogsCache" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ImageCache" representedClassName="ImageCache" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="url"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="StarWarsCoreData" representedClassName="StarWarsCoreData" syncable="YES">
         <attribute name="birthYear" optional="YES" attributeType="String"/>
         <attribute name="eyeColor" optional="YES" attributeType="String"/>
@@ -11,6 +33,9 @@
         <attribute name="skinColor" optional="YES" attributeType="String"/>
     </entity>
     <elements>
+        <element name="CatsAndDogsCache" positionX="-268.947998046875" positionY="-8.0107421875" width="128" height="119"/>
+        <element name="ImageCache" positionX="-144" positionY="63" width="128" height="74"/>
         <element name="StarWarsCoreData" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="DogsCache" positionX="-162" positionY="45" width="128" height="59"/>
     </elements>
 </model>
